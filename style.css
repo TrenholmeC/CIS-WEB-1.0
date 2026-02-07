@@ -45,7 +45,7 @@ main {
   font-style: normal;
 }
 
-h1, h2, .link-directory a {
+h1, h2, .link-directory a, .name, .title, #profile-directory li {
     font-family: 'brick-flash', sans-serif;
     font-weight: normal;
     text-align: center;
@@ -58,6 +58,7 @@ h1 {
 
 h2 {
     font-size: 60px;
+    padding-bottom: 25px;
 }
 
 #wrapper {
@@ -65,26 +66,65 @@ h2 {
     padding: 30px;
 }
 
-.link-directory a {
+.link-directory a, #profile-directory li {
     font-size: 45px;
 }
 
-.link-directory td {
+.link-directory td, .link-directory li {
     padding: 25px;
 }
 
-.link-directory tr {
+.link-directory tr, .link-directory li {
     text-align: center;
 }
 
 .link-directory {
+    display: table;
     margin: 0 auto;
+    list-style: none;
 }
 
 #web-badges {
     padding: 30px;
 }
 
+#forum-signatures {
+    padding: 20px;
+}
+
 #web-badges img {
     padding: 0 5px;
+}
+
+.qoute q, .qoute p {
+    text-align: center;
+    display: block;
+    font-size: 25px;
+}
+
+.qoute {
+    padding: 10px 0;
+}
+
+.name {
+    font-size: 35px;
+}
+
+.title {
+    font-size: 25px;
+}
+
+#profile-directory a::before {
+    content: '\2605\0009'; /* indicate people with a page by appending a star */
+}
+
+#student-profile {
+    float: right;
+}
+
+.profile-picture {
+    border: 5px solid steelblue;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 15px;
 }
