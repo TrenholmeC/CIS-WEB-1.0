@@ -4,6 +4,11 @@
     padding: 0;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
 /* Make Sure Web Page Fills Screen */
 html, body {
     height: 100%; /* Ensures the body can stretch to the full viewport height */
@@ -12,6 +17,7 @@ html, body {
 
 body {
     min-height: 100vh; /* Ensures the body is at least the height of the viewport */
+    background-color: teal;
 }
 
 header {
@@ -39,15 +45,40 @@ main {
   font-style: normal;
 }
 
-h1 {
+h1, h2, .link-directory a {
     font-family: 'brick-flash', sans-serif;
-    font-size: 80px;
+    font-weight: normal;
     text-align: center;
+    text-shadow: 2px 2px white;
+}
+
+h1 {
+    font-size: 80px;
+}
+
+h2 {
+    font-size: 60px;
 }
 
 #wrapper {
     flex: 1;
     padding: 30px;
+}
+
+.link-directory a {
+    font-size: 45px;
+}
+
+.link-directory td {
+    padding: 25px;
+}
+
+.link-directory tr {
+    text-align: center;
+}
+
+.link-directory {
+    margin: 0 auto;
 }
 
 #web-badges {
