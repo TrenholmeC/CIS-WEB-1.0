@@ -1,0 +1,19 @@
+/* Remove Default Spacing from All Tags */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Cursive Pixely Font */
+@font-face {
+  font-family: 'brick-flash';
+  src: url('brick-flash.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1 {
+    font-family: 'brick-flash', sans-serif;
+    font-size: 80px;
+    text-align: center;
+}
