@@ -4,6 +4,33 @@
     padding: 0;
 }
 
+/* Make Sure Web Page Fills Screen */
+html, body {
+    height: 100%; /* Ensures the body can stretch to the full viewport height */
+    margin: 0;
+}
+
+body {
+    min-height: 100vh; /* Ensures the body is at least the height of the viewport */
+}
+
+header {
+    height: 100px;
+}
+
+footer p {
+    font-size: small;
+    font-style: italic;
+    text-align: center;
+    height: 25px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100% - 125px);
+}
+
 /* Cursive Pixely Font */
 @font-face {
   font-family: 'brick-flash';
@@ -16,4 +43,17 @@ h1 {
     font-family: 'brick-flash', sans-serif;
     font-size: 80px;
     text-align: center;
+}
+
+#wrapper {
+    flex: 1;
+    padding: 30px;
+}
+
+#web-badges {
+    padding: 30px;
+}
+
+#web-badges img {
+    padding: 0 5px;
 }
