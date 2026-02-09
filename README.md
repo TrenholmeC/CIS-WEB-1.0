@@ -15,14 +15,9 @@ https://cli.github.com/manual/gh_auth
 9. If enough contributers vote on your pull request it will be able to be merged to the main branch.
 
 # How to Run Locally
-A simple way to run the website localy is to use the Webstorm IDE from Jetbrains, pressing "play" in any html file will automatically spin up a temporary http server.
+Enter the folder for the project in a terminal and run ``php -S localhost:8000``.
 
-Running a simple HTTP server is also super simple using the python package!
-Once you change your working directory to the directory of the git project run this command:
-``python -m http.server 8000`` (may be ``python3`` instead of ``python`` on some machines).
-Now you can access the website on ``http://localhost:8000``
-
-Running a http server is curcial for the website to be able to load dependencies such as js, css and font files.
+The website should now be accessible at ``localhost:8000`` on your local machine.
 
 # Image Standards
 The following are some standards to keep images consistent, maintainable and at a reasonable size.

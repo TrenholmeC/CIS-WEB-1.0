@@ -45,11 +45,11 @@ main {
   font-style: normal;
 }
 
-h1, h2, .link-directory a, .name, .title, #profile-directory li {
+h1, h2, h3, .link-directory a, .name, .title, #profile-directory li, .qoute p {
     font-family: 'brick-flash', sans-serif;
     font-weight: normal;
     text-align: center;
-    text-shadow: 2px 2px white;
+    text-shadow: 1px 1px white;
 }
 
 h1 {
@@ -61,17 +61,30 @@ h2 {
     padding-bottom: 25px;
 }
 
+h3 {
+    font-size: 40px;
+    padding-bottom: 25px;
+}
+
 #wrapper {
     flex: 1;
     padding: 30px;
+}
+
+#inner-wrapper {
+    padding: 0 20%;
 }
 
 .link-directory a, #profile-directory li {
     font-size: 45px;
 }
 
-.link-directory td, .link-directory li {
+.link-directory td {
     padding: 25px;
+}
+
+.link-directory li {
+    padding: 15px;
 }
 
 .link-directory tr, .link-directory li {
@@ -92,6 +105,11 @@ h2 {
     padding: 20px;
 }
 
+/* ensures signatures stack vertically */
+#forum-signatures img {
+    display: block;
+}
+
 #web-badges img {
     padding: 0 5px;
 }
@@ -106,7 +124,11 @@ h2 {
     padding: 10px 0;
 }
 
-.name {
+.qoute p::before {
+    content: '\2014'; /* add emdash to name*/
+}
+
+.name, .qoute p {
     font-size: 35px;
 }
 
@@ -115,14 +137,18 @@ h2 {
 }
 
 #profile-directory a::before {
-    content: '\2605\0009'; /* indicate people with a page by appending a star */
+    content: '*\0009';
+    font-size: 80px;
+    line-height: 40px;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 #student-profile {
     float: right;
 }
 
-.profile-picture {
+.profile-picture, .highlight img {
     border: 5px solid steelblue;
     margin: 0 auto;
     display: block;

@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Computer Information Systems</title>
+    <!-- Browsers won't use a cached version of style.css if the date on ?v= doesn't match -->
+    <link rel="stylesheet" href="/style.css?v=2026-02-08-21:31">
+</head>
+<body>
+    <header>
+        <a href="/index.php"><h1>Computer Information Systems</h1></a>
+    </header>
+    <main>
+        <div id="wrapper">
+            <?php echo $include_args['content'] ?>
+        </div>
+        <div id="web-badges">
+            <!-- Dr. Pepper is based -->
+            <img src="/img/web-badges/drp.gif" alt="web badge proclaiming the site is Powered by Dr. Pepper" width="88" height="31">
+            <!-- Mike's Movie Reviews -->
+            <img src="/img/web-badges/geo-cities.gif" alt="Geo Cities web badge" width="88" height="31">
+            <!-- Isaac liked this one for some reason -->
+            <img src="/img/web-badges/vanilla-and-debbie.gif" alt="Vanilla and Debbie web badge" width="88" height="31">
+            <!-- Web 1.0 -->
+            <img src="/img/web-badges/valid-xhtml-1.0.gif" alt="Valid XHTML 1.0 web badge" width="88" height="31">
+        </div>
+    </main>
+    <footer>
+        <p>Report any issues to Chandler on discord</p>
+    </footer>
+</body>
+</html>
