@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ezyang/htmlpurifier": "^4.19",
+        "phroute/phroute": "^2.2"
+    }
+}
