@@ -1,7 +1,7 @@
 <?php
-    /* Simple Router */
-
-    if (preg_match('/\.(?:png|jpg|jpeg|gif|webp|css|js|otf)($|\?)/', $_SERVER["REQUEST_URI"])) {
+    // for test enviornments only, apache and other reverse proxies need special configuration
+    // a .htaccess is included in this folder for apache setups
+    if (preg_match('/\.(?:png|jpg|gif|webp|css|js|otf|txt)($|\?)/', $_SERVER["REQUEST_URI"])) {
         return false; // static content, serve the requested resource as-is
     }
 
@@ -12,10 +12,16 @@
     require_once $PROJECT_DIR . "/vendor/autoload.php";
     require_once $PRIVATE_DIR . "/tools.php";
 
+    $html_purififier_config = HTMLPurifier_Config::createDefault();
+
+    $html_purififier_config->set('HTML.AllowedElements', 'a, i, b, p, div, strong, ul, ol, li, code');
+    $html_purififier_config->set('HTML.AllowedAttributes', 'a.href, a.title');
+
+    $HTML_PURIFIER = new HTMLPurifier($html_purififier_config);
+
     use Phroute\Phroute\RouteCollector;
     use Phroute\Phroute\Dispatcher;
 
-    // Create a route collector
     $router = new RouteCollector();
 
     $router->get('/', function(){
@@ -33,6 +39,11 @@
         include $PUBLIC_DIR . "/class-directory.php";
     });
 
+    $router->get('/class/{year}', function($year){
+        global $PUBLIC_DIR;
+        include $PUBLIC_DIR . "/class/" . $year . "/index.php";
+    });
+
     $router->get('/class/{year}/highlights', function($year){
         global $PUBLIC_DIR;
         include $PUBLIC_DIR . "/class/" . $year . "/highlights.php";
@@ -43,14 +54,19 @@
         include $PUBLIC_DIR . "/class/" . $year . "/student-directory.php";
     });
 
-    $router->get('/class/2027/student/{student}', function($student){
+    $router->get('/class/{year}/student/{student}', function($year, $student){
         global $PUBLIC_DIR;
-        include $PUBLIC_DIR . "/class/2027/student/" . $student . "/index.php";
+        include $PUBLIC_DIR . "/class/" . $year . "/student/" . $student . "/index.php";
     });
 
-    $router->get('/class/{year}', function($year){
+    $router->get('/form/{form}', function($form) {
         global $PUBLIC_DIR;
-        include $PUBLIC_DIR . "/class/" . $year . "/index.php";
+        include $PUBLIC_DIR . "/form/" . $form . "/index.php";
+    });
+
+    $router->post("/form/{form}/{action}", function($form, $action) {
+        global $PUBLIC_DIR, $HTML_PURIFIER;
+        include $PUBLIC_DIR . "/form/" . $form . "/" . $action . ".php";
     });
 
     // Get the route data

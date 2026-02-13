@@ -1,4 +1,5 @@
-/* Remove Default Spacing from All Tags */
+/* == General Styles == */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,15 +10,15 @@ a {
     text-decoration: none;
 }
 
-/* Make Sure Web Page Fills Screen */
-html, body {
-    height: 100%; /* Ensures the body can stretch to the full viewport height */
-    margin: 0;
+body {
+    min-height: 100dvh; /* Ensures the body is at least the height of the viewport */
+    background-color: teal;
+    display: flex;
+    flex-direction: column;
 }
 
-body {
-    min-height: 100vh; /* Ensures the body is at least the height of the viewport */
-    background-color: teal;
+main {
+    flex: 1; /* Allow main content to fill in empty space */
 }
 
 header {
@@ -29,12 +30,6 @@ footer p {
     font-style: italic;
     text-align: center;
     height: 25px;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100% - 125px);
 }
 
 /* Cursive Pixely Font */
@@ -75,6 +70,16 @@ h3 {
     padding: 0 20%;
 }
 
+#web-badges {
+    padding: 30px;
+}
+
+#web-badges img {
+    padding: 0 5px;
+}
+
+/* == Link Directories == */
+
 .link-directory a, #profile-directory li {
     font-size: 45px;
 }
@@ -97,22 +102,7 @@ h3 {
     list-style: none;
 }
 
-#web-badges {
-    padding: 30px;
-}
-
-#forum-signatures {
-    padding: 20px;
-}
-
-/* ensures signatures stack vertically */
-#forum-signatures img {
-    display: block;
-}
-
-#web-badges img {
-    padding: 0 5px;
-}
+/* == Common Components == */
 
 .qoute q, .qoute p {
     text-align: center;
@@ -136,8 +126,10 @@ h3 {
     font-size: 25px;
 }
 
+/* == Profiles == */
+
 #profile-directory a::before {
-    content: '*\0009';
+    content: '*\0009'; /* add asterisk to names with a profile  */
     font-size: 80px;
     line-height: 40px;
     vertical-align: middle;
@@ -155,12 +147,23 @@ h3 {
     margin-bottom: 15px;
 }
 
+#forum-signatures {
+    padding: 20px;
+}
+
+/* ensures signatures stack vertically */
+#forum-signatures img {
+    display: block;
+}
+
+/* == Forms == */
+
 form table {
     width: 400px;
     margin: 0 auto;
 }
 
-#preview-button {
+input[type='submit'] {
     display: block;
     margin: 20px auto;
 }
