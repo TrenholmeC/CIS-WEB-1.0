@@ -9,11 +9,13 @@ There are pages dedicated to the topics covered in the program as well as classe
 
 ## Required
 * ``php8`` (PHP, version 8 or greater)
-* ``ezyang/htmlpurifier`` (PHP library)
+* ``ezyang/htmlpurifier`` (HTML Filter)
+* ``phroute/phroute`` (Request Router)
 
 ## Recommended
 * ``apache2`` (HTTP Server)
-    * ``libapache2-mod-php``
+    * ``libapache2-mod-php`` (Serving PHP Files)
+    * ``mod_rewrite`` (URL Rewriting; Included with Apache by default)
 * ``composer`` (Managing PHP Libraries)
 
 # How to Contribute Code

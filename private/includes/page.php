@@ -1,8 +1,16 @@
-<html>
+ <!DOCTYPE html>
+<html lang="en-CA">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Computer Information Systems</title>
-    <!-- Browsers won't use a cached version of style.css if the date on ?v= doesn't match -->
-    <link rel="stylesheet" href="/style.css?v=2026-02-08-21:31">
+    <meta name="description" content="A website project for the Computer Information Systems (CIS) program at Holland College.">
+
+    <!-- Browsers won't use a cached version of style.css if the value on ?v= doesn't match -->
+    <link rel="stylesheet" href="/style.css?v=<?= filemtime($PUBLIC_DIR . "/style.css") ?>">
+
+    <meta name="robots" content="<?= $include_args['robot_indexing'] ?? "index, follow" ?>">
 </head>
 <body>
     <header>
@@ -12,6 +20,8 @@
         <div id="wrapper">
             <?php echo $include_args['content'] ?>
         </div>
+    </main>
+    <footer>
         <div id="web-badges">
             <!-- Dr. Pepper is based -->
             <img src="/img/web-badges/drp.gif" alt="web badge proclaiming the site is Powered by Dr. Pepper" width="88" height="31">
@@ -22,8 +32,6 @@
             <!-- Web 1.0 -->
             <img src="/img/web-badges/valid-xhtml-1.0.gif" alt="Valid XHTML 1.0 web badge" width="88" height="31">
         </div>
-    </main>
-    <footer>
         <p>Report any issues to Chandler on discord</p>
     </footer>
 </body>

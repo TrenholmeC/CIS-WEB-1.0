@@ -1,7 +1,11 @@
 <?php
+
+$INCLUDES_DIR = $PRIVATE_DIR . "/includes/";
+
 function use_include($include_file, $include_args) {
-    global $PRIVATE_DIR;
-    include $PRIVATE_DIR . "/includes/" . $include_file . ".php";
+    global $INCLUDES_DIR;
+    global $PUBLIC_DIR;
+    include $INCLUDES_DIR . $include_file . ".php";
 }
 
 function create_quote($qoute, $speaker) {
