@@ -22,6 +22,9 @@
         </div>
     </main>
     <footer>
+        <div id="working-directory">
+            <p>C:\<?= substr(str_replace("/", "\\", $URL_PATH), 1) ?><blink-182 data-blink-time="1000">_</blink-182></p>
+        </div>
         <div id="web-badges">
             <!-- Dr. Pepper is based -->
             <img src="/img/web-badges/drp.gif" alt="web badge proclaiming the site is Powered by Dr. Pepper" width="88" height="31">

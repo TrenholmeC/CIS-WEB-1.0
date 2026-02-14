@@ -5,19 +5,33 @@
         return false; // static content, serve the requested resource as-is
     }
 
+    $URL_PATH = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
     $PROJECT_DIR = dirname($_SERVER['DOCUMENT_ROOT']);
-    $PRIVATE_DIR = $PROJECT_DIR . "/private";
-    $PUBLIC_DIR = $PROJECT_DIR . "/public";
 
     require_once $PROJECT_DIR . "/vendor/autoload.php";
+
+    $dotenv = Dotenv\Dotenv::createImmutable($PROJECT_DIR);
+    $dotenv->load();
+
+    $PRIVATE_DIR = str_replace("$", $PROJECT_DIR, $_ENV['PRIVATE_DIR']);
+    $PUBLIC_DIR = str_replace("$", $PROJECT_DIR, $_ENV['PUBLIC_DIR']);
+
     require_once $PRIVATE_DIR . "/tools.php";
 
-    $html_purififier_config = HTMLPurifier_Config::createDefault();
+    $html_purifier_config = HTMLPurifier_Config::createDefault();
+    $html_purifier_config->set('HTML.DefinitionID', 'hccis.html');
+    $html_purifier_config->set('HTML.DefinitionRev', 2);
+    $html_purifier_config->set('Cache.DefinitionImpl', null);
+    $html_purifier_config->set('HTML.AllowedElements', $_ENV['ALLOWED_HTML_ELEMENTS']);
+    $html_purifier_config->set('HTML.AllowedAttributes', $_ENV['ALLOWED_HTML_ATTRIBUTES']);
 
-    $html_purififier_config->set('HTML.AllowedElements', 'a, i, b, p, div, strong, ul, ol, li, code');
-    $html_purififier_config->set('HTML.AllowedAttributes', 'a.href, a.title');
+    /* create custom elements */
+    if($def = $html_purifier_config->maybeGetRawHTMLDefinition(true)) {
+        $def->addElement('blink-182', 'Inline', 'Inline', 'Common');
+        $def->addAttribute('blink-182', 'data-blink-time', 'Number');
+    }
 
-    $HTML_PURIFIER = new HTMLPurifier($html_purififier_config);
+    $HTML_PURIFIER = new HTMLPurifier($html_purifier_config);
 
     use Phroute\Phroute\RouteCollector;
     use Phroute\Phroute\Dispatcher;
@@ -65,7 +79,7 @@
     });
 
     $router->post("/form/{form}/{action}", function($form, $action) {
-        global $PUBLIC_DIR, $HTML_PURIFIER;
+        global $PUBLIC_DIR, $HTML_PURIFIER, $URL_PATH;
         include $PUBLIC_DIR . "/form/" . $form . "/" . $action . ".php";
     });
 
@@ -76,7 +90,7 @@
     $dispatcher = new Dispatcher($routeData);
 
     try {
-        $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+        $response = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'], $URL_PATH);
         echo $response;
     } catch (Phroute\Phroute\Exception\HttpRouteNotFoundException $e) {
         // Handle 404 Not Found

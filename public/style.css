@@ -21,10 +21,6 @@ main {
     flex: 1; /* Allow main content to fill in empty space */
 }
 
-header {
-    height: 100px;
-}
-
 footer p {
     font-size: small;
     font-style: italic;
@@ -40,7 +36,7 @@ footer p {
   font-style: normal;
 }
 
-h1, h2, h3, .link-directory a, .name, .title, #profile-directory li, .qoute p {
+h1, h2, h3, .link-directory a, .name, .title, #profile-directory li, .qoute p, #working-directory p {
     font-family: 'brick-flash', sans-serif;
     font-weight: normal;
     text-align: center;
@@ -63,11 +59,7 @@ h3 {
 
 #wrapper {
     flex: 1;
-    padding: 30px;
-}
-
-#inner-wrapper {
-    padding: 0 20%;
+    margin: 30px;
 }
 
 #web-badges {
@@ -76,6 +68,30 @@ h3 {
 
 #web-badges img {
     padding: 0 5px;
+}
+
+#working-directory p {
+    text-align: left;
+    font-size: 0px;
+    padding: 30px;
+}
+
+@media screen and (max-width: 600px) {
+    #wrapper {
+        margin: 15px;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    #inner-wrapper {
+        padding: 0 10%;
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    #working-directory p {
+        font-size: 50px;
+    }
 }
 
 /* == Link Directories == */
@@ -102,6 +118,12 @@ h3 {
     list-style: none;
 }
 
+@media screen and (max-width: 600px) {
+  table.link-directory, .link-directory thead, .link-directory tbody, .link-directory th, .link-directory td, .link-directory tr {
+    display: block; /* */
+  }
+}
+
 /* == Common Components == */
 
 .qoute q, .qoute p {
@@ -126,6 +148,27 @@ h3 {
     font-size: 25px;
 }
 
+blink-182 {
+  animation: blink-animation 500ms infinite;
+  animation-timing-function: step-end;
+}
+
+blink-182[data-blink-time] {
+    animation: blink-animation attr(data-blink-time ms) infinite;
+    animation-timing-function: step-end;
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+
 /* == Profiles == */
 
 #profile-directory a::before {
@@ -148,12 +191,19 @@ h3 {
 }
 
 #forum-signatures {
-    padding: 20px;
+    padding: 20px 0;
 }
 
 /* ensures signatures stack vertically */
 #forum-signatures img {
     display: block;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+    #student-profile {
+        float: none;
+    }
 }
 
 /* == Forms == */

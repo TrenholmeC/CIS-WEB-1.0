@@ -24,4 +24,3 @@ User-agent: Webz.io
 User-agent: Diffbot
 User-agent: ICC-Crawler
 Disallow: /
-Content-Signal: ai-train=no, search=yes, ai-input=no # not an official standard, recommended by cloudflare, bots can choose to follow this or not

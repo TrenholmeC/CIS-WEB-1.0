@@ -9,8 +9,9 @@ There are pages dedicated to the topics covered in the program as well as classe
 
 ## Required
 * ``php8`` (PHP, version 8 or greater)
-* ``ezyang/htmlpurifier`` (HTML Filter)
-* ``phroute/phroute`` (Request Router)
+    * ``ezyang/htmlpurifier`` (HTML Filter)
+    * ``phroute/phroute`` (Request Router)
+    * ``vlucas/phpdotenv`` (Enviornment Variables)
 
 ## Recommended
 * ``apache2`` (HTTP Server)
@@ -26,7 +27,7 @@ https://cli.github.com/manual/gh_auth
 2. Clone the repo while in the directory you want to save the project: ``git clone https://github.com/TrenholmeC/CIS-WEB-1.0.git``
 3. A new directory named ``CIS-WEB-1.0`` should now be in the current working directory.
 4. Start modifying, deleting and adding files!
-5. Test the website in a local enviornment!! (See the next section in this read me)
+5. Test the website in a local enviornment!! (See the next two sections in this read me)
 6. After finishing all modifications and extensive testing in a local environment you can do a push to a new branch by following these commands:
     1. ``git add .`` stages all changes and prepares them to be pushed
     2. ``git checkout -b <branch>`` create and switch to a new branch called ``<branch>``, make the branch name specific to what you have changed or fixed!
@@ -36,7 +37,22 @@ https://cli.github.com/manual/gh_auth
 8. Open a pull request and let people know there are changes to be merged!
 9. If enough contributers vote on your pull request it will be able to be merged to the main branch.
 
+# Enviornment Variables
+
+This project includes a ``.env.example`` to aid in setting up enviornment variables.
+
+Here is a description for each variable:
+
+* PUBLIC_DIR - path to the folder that contains all public and viewable content, a ``$`` will be replaced with the path for the parent folder of the server's document root
+* PRIVATE_DIR - path to the folder that contains all private and backend content, a ``$`` will be replaced with the path for the parent folder of the server's document root
+* ALLOWED_HTML_ELEMENTS - HTML elements that are allowed to be used in user input
+* ALLOWED_HTML_ATTRIBUTES - HTML attributes that are allowed to be used in user input
+
 # How to Run Locally
+
+Install all **Required** dependencies, if using ``composer`` to manage PHP libraries run ``composer require`` in the root of the project to install all required PHP libraries.
+
+Create a ``.env`` file with configured settings at the root of the project, see the previous section for details.
 
 Enter the ``public`` folder for the project in a terminal and run ``php -S localhost:8000``.
 
@@ -45,8 +61,6 @@ The website should now be accessible at ``localhost:8000`` on your local machine
 # Requirements for a Production Enviornment
 
 Ensure the document root is set to the ``public`` folder of the project and anything else is not visible.
-
-For extra security ensure the ``private`` folder is not stored in ``/var/www/``
 
 # Image Standards
 
