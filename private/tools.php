@@ -3,8 +3,7 @@
 $INCLUDES_DIR = $PRIVATE_DIR . "/includes/";
 
 function use_include($include_file, $include_args) {
-    global $INCLUDES_DIR;
-    global $PUBLIC_DIR;
+    global $INCLUDES_DIR, $PUBLIC_DIR, $URL_PATH;
     include $INCLUDES_DIR . $include_file . ".php";
 }
 

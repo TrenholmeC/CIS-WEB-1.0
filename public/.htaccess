@@ -3,3 +3,4 @@
     RewriteCond %{REQUEST_URI} !\.(jpg|png|gif|webp|css|js|otf|txt)($|\?)
     RewriteRule ^(.*)$ router.php [L,QSA]
 </IfModule>
+DirectorySlash Off
